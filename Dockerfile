@@ -4,6 +4,13 @@ FROM python:3.11-slim
 # Set workdir
 WORKDIR /app
 
+# copy backend
+COPY backend ./backend
+
+# copy frontend (so /app/frontend/public exists)
+COPY frontend ./frontend
+
+
 # Install system deps
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
@@ -28,3 +35,4 @@ EXPOSE 8000
 
 # Run uvicorn
 CMD ["uvicorn", "backend.app:app", "--host", "0.0.0.0", "--port", "8000"]
+
