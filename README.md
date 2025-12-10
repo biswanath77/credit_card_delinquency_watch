@@ -1,4 +1,4 @@
- # Early Risk Signals – Credit Card Delinquency Prediction System
+ # Early Risk Signals – Credit Card Delinquency Watch System
 
 A lightweight, modular system that identifies **early behavioral signals** of credit card delinquency using engineered features and a machine learning model.  
 The project includes a **FastAPI backend**, **ML scoring engine**, and an interactive **frontend dashboard**.
@@ -56,8 +56,9 @@ python run.py
 Dashboard → http://localhost:8000
 
 API Docs → http://localhost:8000/docs
-
-🧠 Core Machine Learning Model
+```
+---
+##🧠 Core Machine Learning Model
 Algorithm: Gradient Boosting Classifier
 Classes:
 
@@ -73,8 +74,8 @@ Endpoint	Method	Description
 /api/v1/customers	GET	Fetch all customers with risk tiers
 /api/v1/risk-distribution	GET	Returns dataset-level risk distribution
 /api/v1/signals	GET	Returns behavioral signal breakdown
-
-🐳 Docker Deployment
+---
+##🐳 Docker Deployment
 Build Image
 docker build -t cc-delinquency:latest .
 Run Container
@@ -85,8 +86,8 @@ Project overview	docs/Credit_Card_Delinquency_Watch_Documentation.docx
 API usage	docs/API_DOCUMENTATION.md
 Deployment guide	docs/SETUP_AND_DEPLOYMENT.md
 Developer guide	docs/DEVELOPER_GUIDE.md
-
-🧱 Technology Stack
+---
+##🧱 Technology Stack
 Backend: FastAPI, Uvicorn
 
 Frontend: HTML, CSS, JavaScript
@@ -96,12 +97,12 @@ ML: scikit-learn
 Visualization: Chart.js
 
 Deployment: Docker / Docker Compose
-
-📝 Version History
+---
+##📝 Version History
 Version	Date	Changes
 v1.0	Dec 2025	Initial release with complete backend, ML model, and dashboard
-
-📌 Notes for Developers
+---
+## 📌 Notes for Developers
 Modify thresholds in:
 backend/app/core/config.py
 
