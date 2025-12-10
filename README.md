@@ -15,7 +15,7 @@ The project includes a **FastAPI backend**, **ML scoring engine**, and an intera
 ---
 
 ## 📁 Project Structure
-
+```
 credit_card_delinquency_watch/
 ├── backend/
 │ ├── app/ # API, services, scoring engine, ML model loader
@@ -33,7 +33,7 @@ credit_card_delinquency_watch/
 ├── docker-compose.yml
 └── requirements.txt
 
----
+```
 
 ## 🚀 Quick Start
 
