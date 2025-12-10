@@ -15,10 +15,10 @@ The project includes a **FastAPI backend**, **ML scoring engine**, and an intera
 ---
 
 ## 📘 Documentation Index
-- Project Documentation	docs/Credit_Card_Delinquency_Watch_Documentation.pdf
-- API usage	docs/API_DOCUMENTATION.md
-- Deployment guide	docs/SETUP_AND_DEPLOYMENT.md
-- Developer guide	docs/DEVELOPER_GUIDE.md
+- **Project Documentation:**	docs/Credit_Card_Delinquency_Watch_Documentation.pdf
+- API usage:	docs/API_DOCUMENTATION.md
+- Deployment guide:	docs/SETUP_AND_DEPLOYMENT.md
+- Developer guide:	docs/DEVELOPER_GUIDE.md
   
 ---
 
