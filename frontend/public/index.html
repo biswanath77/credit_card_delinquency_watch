@@ -160,8 +160,13 @@
 
         .chart-wrapper {
             position: relative;
-            height: 300px;
+            height: 340px; /* ensure Chart.js has enough height to render */
             margin-bottom: 30px;
+        }
+
+        .chart-wrapper canvas {
+            width: 100% !important;
+            height: 100% !important;
         }
 
         .risk-tier-badge {
@@ -331,9 +336,9 @@
             <h3>Credit Card Delinquency Watch</h3>
             <nav>
                 <!-- pass the event to avoid using global `event` -->
-                <button class="nav-btn active" onclick="showSection('dashboard', event)">📊 Dashboard</button>
-                <button class="nav-btn" onclick="showSection('customers', event)">👥 Customers</button>
-                <button class="nav-btn" onclick="showSection('tools', event)">🔧 Scoring Tool</button>
+                <button id="btn-dashboard" class="nav-btn active" onclick="showSection('dashboard', event)">📊 Dashboard</button>
+                <button id="btn-customers" class="nav-btn" onclick="showSection('customers', event)">👥 Customers</button>
+                <button id="btn-tools" class="nav-btn" onclick="showSection('tools', event)">🔧 Scoring Tool</button>
             </nav>
         </header>
 
@@ -393,15 +398,33 @@
         const API_BASE = window.API_BASE || '/api/v1';
         let tierChart, scoreChart;
 
-        function showSection(sectionId, evt) {
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        function activateNavButton(sectionId) {
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(sectionId).classList.add('active');
-            if (evt && evt.target) evt.target.classList.add('active');
+            const btn = document.getElementById('btn-' + sectionId);
+            if (btn) btn.classList.add('active');
+        }
 
-            if (sectionId === 'dashboard') loadDashboard();
-            else if (sectionId === 'customers') loadCustomers();
-            else if (sectionId === 'tools') loadScoringTool();
+        async function showSection(sectionId, evt) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            activateNavButton(sectionId);
+
+            // call relevant loader
+            if (sectionId === 'dashboard') {
+                // small delay to allow layout changes to settle
+                setTimeout(() => {
+                    loadDashboard();
+                    // force resize after a short delay so Chart.js can adapt
+                    setTimeout(() => {
+                        try { if (tierChart) tierChart.resize(); } catch(e){/*ignore*/}
+                        try { if (scoreChart) scoreChart.resize(); } catch(e){/*ignore*/}
+                    }, 150);
+                }, 120);
+            } else if (sectionId === 'customers') {
+                loadCustomers();
+            } else if (sectionId === 'tools') {
+                loadScoringTool();
+            }
         }
 
         async function loadDashboard() {
@@ -471,6 +494,12 @@
                     },
                     options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true } } }
                 });
+
+                // ensure charts draw correctly once rendered
+                setTimeout(() => {
+                    try { if (tierChart) tierChart.resize(); } catch(e){/*ignore*/}
+                    try { if (scoreChart) scoreChart.resize(); } catch(e){/*ignore*/}
+                }, 120);
 
             } catch (error) {
                 console.error('Dashboard error:', error);
@@ -584,12 +613,23 @@
             }
         }
 
+        // On load: prepare form, then render dashboard after layout stabilizes
         window.addEventListener('load', () => {
-            document.getElementById('timestamp').textContent = new Date().toLocaleString();
+            document.getElementById('timestamp')?.remove?.();
             loadScoringTool();   // prepare scoring form
-            loadDashboard();     // load dashboard by default
+
+            // Delay loading the dashboard slightly so CSS and layout settle,
+            // avoiding Chart.js zero-size render issues.
+            setTimeout(() => {
+                loadDashboard();
+            }, 180);
+
+            // Resize charts on window resize
+            window.addEventListener('resize', () => {
+                try { if (tierChart) tierChart.resize(); } catch(e){/*ignore*/}
+                try { if (scoreChart) scoreChart.resize(); } catch(e){/*ignore*/}
+            });
         });
     </script>
 </body>
 </html>
-
