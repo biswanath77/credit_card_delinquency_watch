@@ -1,108 +1,112 @@
-5. **Read Guides** → `docs/` folder
-6. **Add Features** → Follow patterns in existing code
-7. **Test Changes** → Restart app, check dashboard
+ # Early Risk Signals – Credit Card Delinquency Prediction System
 
-Early Risk Signals – Credit Card Delinquency Prediction System
+A lightweight, modular system that identifies **early behavioral signals** of credit card delinquency using engineered features and a machine learning model.  
+The project includes a **FastAPI backend**, **ML scoring engine**, and an interactive **frontend dashboard**.
 
-A lightweight, modular system that identifies early behavioral signals of credit card delinquency using rule-based indicators and a machine learning model. Includes a backend API (FastAPI) and an interactive dashboard.
+---
 
-⭐ Key Features
+## ⭐ Key Features
+- Early-warning indicators (utilization, spending decline, payment ratio, cash withdrawals)
+- ML-based 3-class delinquency prediction (Clean, Early Risk, High Risk)
+- Real-time scoring API (FastAPI)
+- Interactive dashboard for customer insights & risk visualization
+- Clean, modular folder structure for easy development
 
-Early warning signals (spending decline, utilization, payment behavior, cash usage)
+---
 
-ML-based 3-class delinquency prediction (Clean, Early, High Risk)
+## 📁 Project Structure
 
-Real-time scoring API
-
-Interactive dashboard for customer scoring & risk visualization
-
-Modular, developer-friendly project structure
-
-📁 Project Structure
 credit_card_delinquency_watch/
 ├── backend/
-│   ├── app/               # API, services, ML model loading
-│   ├── data/              # Dataset and model files
-│   └── main.py            # FastAPI entry point
+│ ├── app/ # API, services, scoring engine, ML model loader
+│ ├── data/ # Raw dataset and processed files
+│ └── main.py # FastAPI entry point
 │
 ├── frontend/
-│   └── public/index.html  # Dashboard UI
+│ └── public/index.html # Dashboard UI (HTML/CSS/JS)
 │
-├── docs/                  # Additional documentation (optional)
-├── run.py                 # App launcher
-└── requirements.txt
-├── Dockerfile            
+├── docs/ # Additional documentation 
+├── notebooks/ # Jupyter notebooks (EDA, training)
+├── screenshots/ # Snapshots images 
+├── run.py # Application launcher
+├── Dockerfile
 ├── docker-compose.yml
+└── requirements.txt
 
+---
 
-🚀 Quick Start
-1. Create Environment & Install Dependencies
+## 🚀 Quick Start
+
+### 1. Create Virtual Environment
+```
 python -m venv .venv
-source .venv/bin/activate   # macOS/Linux
-.venv\Scripts\activate      # Windows
+2. Activate Environment
+Windows:
+.venv\Scripts\activate
+macOS / Linux:
+source .venv/bin/activate
 
+3. Install Dependencies
 pip install -r requirements.txt
 
-2. Run the Application
+4. Run Application
 python run.py
 
-3. Access the System
+5. Access System
+Dashboard → http://localhost:8000
 
-Dashboard: http://localhost:8000
+API Docs → http://localhost:8000/docs
 
-API Documentation: http://localhost:8000/docs
+🧠 Core Machine Learning Model
+Algorithm: Gradient Boosting Classifier
+Classes:
+
+0 – Clean
+
+1 – Early Delinquency
+
+2 – High Delinquency
 
 🔌 Core API Endpoints
 Endpoint	Method	Description
 /api/v1/score-customer	POST	Score a single customer
-/api/v1/customers	GET	Get all customers with risk tiers
-/api/v1/risk-distribution	GET	Risk score distribution
-/api/v1/signals	GET	Behavioral signal breakdown
-📊 ML Model (Summary)
+/api/v1/customers	GET	Fetch all customers with risk tiers
+/api/v1/risk-distribution	GET	Returns dataset-level risk distribution
+/api/v1/signals	GET	Returns behavioral signal breakdown
 
-Algorithm: Gradient Boosting Classifier
-
-Classes: 0 – Clean, 1 – Early, 2 – High Risk
-
-Features: Utilization, payment ratio, cash withdrawal %, spend change %, merchant mix, engineered signals
+🐳 Docker Deployment
+Build Image
+docker build -t cc-delinquency:latest .
+Run Container
+docker run -p 8000:8000 cc-delinquency:latest
+docker-compose up --build -d
+📘 Documentation Index
+Project overview	docs/Credit_Card_Delinquency_Watch_Documentation.docx
+API usage	docs/API_DOCUMENTATION.md
+Deployment guide	docs/SETUP_AND_DEPLOYMENT.md
+Developer guide	docs/DEVELOPER_GUIDE.md
 
 🧱 Technology Stack
-
 Backend: FastAPI, Uvicorn
 
 Frontend: HTML, CSS, JavaScript
 
 ML: scikit-learn
 
-Charts: Chart.js
+Visualization: Chart.js
 
-HTTP Client: Axios
-## 💡 Questions?
+Deployment: Docker / Docker Compose
 
-1. **How does it work?** → `docs/PROJECT_STRUCTURE.md`
-2. **How do I use the API?** → `docs/API_DOCUMENTATION.md`
-3. **How do I deploy it?** → `docs/SETUP_AND_DEPLOYMENT.md`
-4. **How do I add features?** → `docs/DEVELOPER_GUIDE.md`
+📝 Version History
+Version	Date	Changes
+v1.0	Dec 2025	Initial release with complete backend, ML model, and dashboard
 
+📌 Notes for Developers
+Modify thresholds in:
+backend/app/core/config.py
 
-## 📝 Version History
+Add new features/signals in:
+backend/app/services/feature_engineering.py
 
-| Version | Date | Changes |
-|---------|------|---------|
-| 1.0 | Dec 3, 2025 | Initial comprehensive framework |
-
----
-
-## ✅ Deliverables Checklist
-
-- ✅ **Analytical Framework**: 8-section Jupyter notebook with complete analysis
-- ✅ **Problem Narrative**: Clear articulation of business challenge
-- ✅ **Signal Framework**: 5 engineered behavioral indicators with effectiveness metrics
-- ✅ **Risk Segmentation**: 3-tier customer classification (HIGH/MEDIUM/LOW)
-- ✅ **Intervention Strategy**: Tier-specific action plans with expected impact
-- ✅ **Financial Model**: ROI analysis showing 3,850% return
-- ✅ **Implementation Roadmap**: 12-week deployment plan with 4 phases
-- ✅ **Operational Guide**: Technical reference for data engineering & operations
-- ✅ **Executive Summary**: Business case for stakeholder approval
-- ✅ **Documentation**: Complete narrative covering all aspects
-
+Retrain the model using notebooks in:
+notebooks/
