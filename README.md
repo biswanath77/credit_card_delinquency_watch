@@ -14,11 +14,9 @@ The project includes a **FastAPI backend**, **ML scoring engine**, and an intera
 
 ---
 ## 🌐 Live Deployment
-
-- The Early Risk Signals – Credit Card Delinquency Prediction System is now live and accessible online:
-
-- 🔗 Live Application:
-## 👉 https://credit-card-delinquency-check.onrender.com/
+- The Early Risk Signals – Credit Card Delinquency Prediction System is live and accessible online:
+## 👉 https://credit-card-delinquency-watch.onrender.com/
+**Note: Please wait 5–10 seconds for the website to load properly.**
 
 What You Can Do on the Live App
 
