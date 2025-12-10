@@ -14,6 +14,14 @@ The project includes a **FastAPI backend**, **ML scoring engine**, and an intera
 
 ---
 
+## 📘 Documentation Index
+- Project Documentation	docs/Credit_Card_Delinquency_Watch_Documentation.pdf
+- API usage	docs/API_DOCUMENTATION.md
+- Deployment guide	docs/SETUP_AND_DEPLOYMENT.md
+- Developer guide	docs/DEVELOPER_GUIDE.md
+  
+---
+
 ## 📁 Project Structure
 ```
 credit_card_delinquency_watch/
@@ -74,28 +82,20 @@ Endpoint	Method	Description
 /api/v1/customers	GET	Fetch all customers with risk tiers
 /api/v1/risk-distribution	GET	Returns dataset-level risk distribution
 /api/v1/signals	GET	Returns behavioral signal breakdown
----
+
 ```
+---
 ## 🐳 Docker Deployment
 ```
-Build Image
-docker build -t cc-delinquency:latest
-Run Container
-docker run -p 8000:8000 cc-delinquency:latest
-docker-compose up --build -d
+Build Start Docker:
+docker compose up --build
+
+Stop and Remove:
+docker compose down
 ```
 ---
 
-## 📘 Documentation Index
-```
-Project overview	docs/Credit_Card_Delinquency_Watch_Documentation.pdf
-API usage	docs/API_DOCUMENTATION.md
-Deployment guide	docs/SETUP_AND_DEPLOYMENT.md
-Developer guide	docs/DEVELOPER_GUIDE.md
-```
----
-
-##🧱 Technology Stack
+##  🧱 Technology Stack
 ```
 Backend: FastAPI, Uvicorn
 
@@ -108,7 +108,7 @@ Visualization: Chart.js
 Deployment: Docker / Docker Compose
 ```
 ---
-##📝 Version History
+##  📝 Version History
 ```
 Version	Date	Changes
 v1.0	Dec 2025	Initial release with complete backend, ML model, and dashboard
