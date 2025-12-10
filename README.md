@@ -47,7 +47,10 @@ credit_card_delinquency_watch/
 │ └── main.py # FastAPI entry point
 │
 ├── frontend/
-│ └── public/index.html # Dashboard UI (HTML/CSS/JS)
+│ └── public/
+│       ├── index.html      # dashboard UI
+│       ├── style.css        
+│       ├── app.js 
 │
 ├── docs/ # Additional documentation 
 ├── notebooks/ # Jupyter notebooks (EDA, training)
