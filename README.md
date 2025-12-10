@@ -34,11 +34,10 @@ credit_card_delinquency_watch/
 └── requirements.txt
 
 ```
-
+---
 ## 🚀 Quick Start
-
-### 1. Create Virtual Environment
 ```
+1. Create Virtual Environment
 python -m venv .venv
 2. Activate Environment
 Windows:
@@ -58,7 +57,7 @@ Dashboard → http://localhost:8000
 API Docs → http://localhost:8000/docs
 ```
 ---
-##🧠 Core Machine Learning Model
+## 🧠 Core Machine Learning Model
 ```
 Algorithm: Gradient Boosting Classifier
 Classes:
@@ -77,20 +76,25 @@ Endpoint	Method	Description
 /api/v1/signals	GET	Returns behavioral signal breakdown
 ---
 ```
-##🐳 Docker Deployment
+## 🐳 Docker Deployment
 ```
 Build Image
-docker build -t cc-delinquency:latest .
+docker build -t cc-delinquency:latest
 Run Container
 docker run -p 8000:8000 cc-delinquency:latest
 docker-compose up --build -d
-📘 Documentation Index
-Project overview	docs/Credit_Card_Delinquency_Watch_Documentation.docx
+```
+---
+
+## 📘 Documentation Index
+```
+Project overview	docs/Credit_Card_Delinquency_Watch_Documentation.pdf
 API usage	docs/API_DOCUMENTATION.md
 Deployment guide	docs/SETUP_AND_DEPLOYMENT.md
 Developer guide	docs/DEVELOPER_GUIDE.md
 ```
 ---
+
 ##🧱 Technology Stack
 ```
 Backend: FastAPI, Uvicorn
