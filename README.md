@@ -1,3 +1,3 @@
 # credit_card_delinquency_watch
 Early risk signal system
-# Check the Project in Submission branch
+# Please Check the Project in Submission branch
