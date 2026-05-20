@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Early Risk Signals Dashboard</title>
+
+  <!-- Use /static/ paths because backend mounts frontend/public at /static -->
+  <link rel="stylesheet" href="/static/style.css">
+
+  <!-- External libs (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Early Risk Signals Dashboard</h1>
+      <h3>Credit Card Delinquency Watch System</h3>
+      <nav>
+        <button id="btn-dashboard" class="nav-btn active" onclick="showSection('dashboard', event)">📊 Dashboard</button>
+        <button id="btn-customers" class="nav-btn" onclick="showSection('customers', event)">👥 Customers</button>
+        <button id="btn-tools" class="nav-btn" onclick="showSection('tools', event)">🔧 Scoring Tool</button>
+      </nav>
+    </header>
+
+    <div id="dashboard" class="section active">
+      <div class="stats-grid" id="statsGrid"></div>
+
+      <div class="chart-container">
+        <h2>Risk Tier Distribution</h2>
+        <div class="chart-wrapper"><canvas id="tierChart"></canvas></div>
+      </div>
+
+      <div class="chart-container">
+        <h2>Risk Score Distribution</h2>
+        <div class="chart-wrapper"><canvas id="scoreChart"></canvas></div>
+      </div>
+    </div>
+
+    <div id="customers" class="section">
+      <div class="search-box">
+        <input type="text" id="customerSearch" placeholder="Search by customer ID...">
+        <select id="tierFilter">
+          <option value="">All Tiers</option>
+          <option value="HIGH">High Risk</option>
+          <option value="MEDIUM">Medium Risk</option>
+          <option value="LOW">Low Risk</option>
+        </select>
+        <button onclick="loadCustomers()">Search</button>
+      </div>
+      <div id="customersTable"></div>
+    </div>
+
+    <div id="tools" class="section">
+      <div class="chart-container">
+        <h2>Customer Risk Assessment Tool</h2>
+        <div id="scoringForm" style="display: grid; gap: 15px;"></div>
+        <button id="scoreBtn" class="primary-btn" onclick="scoreCustomer()">Calculate Risk Score</button>
+        <div id="scoringResult"></div>
+      </div>
+    </div>
+
+    <footer>
+      <p>Early Risk Signals System v1.0 | Developed By: Biswanath Tudu</p>
+    </footer>
+  </div>
+
+  <!-- App JS (served from /static) -->
+  <script src="/static/app.js" defer></script>
+</body>
+</html>
